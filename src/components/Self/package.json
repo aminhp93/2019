@@ -1,0 +1,6 @@
+{
+    "name": "Self",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./Self.js"
+}
