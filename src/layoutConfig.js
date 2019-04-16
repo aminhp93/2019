@@ -118,14 +118,14 @@ const getDefaultLayout = (percentHeightTop = 40, percentWidth = 20) => {
         {
             'type': 'row',
             'content': [
-                {
-                    'type': 'component',
-                    'component': 'Self',
-                    'componentName': 'lm-react-component',
-                    'isClosable': true,
-                    'reorderEnabled': true,
-                    'title': 'Self'
-                }
+                // {
+                //     'type': 'component',
+                //     'component': 'Self',
+                //     'componentName': 'lm-react-component',
+                //     'isClosable': true,
+                //     'reorderEnabled': true,
+                //     'title': 'Self'
+                // }
             ]
         }
     ]

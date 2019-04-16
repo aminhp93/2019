@@ -5,7 +5,7 @@
 
 .goldenLayout {
   position: fixed;
-  top: 0;
+  top: 46px;
   left: 0;
   bottom: 0;
   right: 0;
@@ -23,10 +23,9 @@
 }
 
 .lm_content {
-  background: #171b29;
+  background: white;
   overflow: auto;
 }
-
 
 .wrapComponent {
   color: white;
@@ -36,3 +35,27 @@
 .wrapComponent > div {
   height: 100%;
 }
+
+.lm_goldenlayout {
+  background: #364150;
+}
+
+/* HEADER */
+.header {
+  background: #2b3643;
+  height: 46px;
+  color: white;
+}
+/* END HEADER */
+
+/* MENU */
+.menu {
+  /* background: red; */
+  position: fixed;
+  top: 46px;
+  left: 0px;
+  width:40px;
+  height: 100%;
+  z-index: 1;
+}
+/* END MENU */

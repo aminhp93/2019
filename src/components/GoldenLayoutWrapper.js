@@ -5,6 +5,8 @@ import GoldenLayout from 'golden-layout';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import Self from './Self';
+import Header from './Header';
+import Menu from './Menu';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import layoutConfig from '../layoutConfig';
 import dataStorage from '../dataStorage';
@@ -60,6 +62,7 @@ class GoldenLayoutWrapper extends React.Component {
     }
 
     initGoldenLayout(mode) {
+        const that = this;
         let layout = layoutConfig.getDefaultLayout();
         const config = {
             dimensions: {
@@ -74,11 +77,14 @@ class GoldenLayoutWrapper extends React.Component {
 
         if (this.goldenLayout) this.goldenLayout.destroy();
 
+        // const a = window.location.href.match(/(gl-window=)(.*)/)
+        // if (a && a.length && a[2]) {
+        //     console.log(dataStorage)
+        //     localStorage.setItem(a[2], JSON.stringify(layout[0]))
+        // }
+
         this.goldenLayout = new GoldenLayout(config, this.layout);
         this.initLayoutConfig([config]);
-        const listComponent = [
-            ['Self', Self]
-        ]
         /// Callback for every created stack
         this.goldenLayout.on('stackCreated', (stack) => {
             console.log(123)
@@ -112,6 +118,7 @@ class GoldenLayoutWrapper extends React.Component {
             console.log(123)
         });
         this.goldenLayout.on('windowOpened', (event) => {
+            that.goldenLayout.eventHub.emit('sayHi', { name: dataStorage });
             console.log(event)
         });
         this.goldenLayout.on('windowClosed', (event) => {
@@ -119,9 +126,15 @@ class GoldenLayoutWrapper extends React.Component {
         });
         if (this.goldenLayout.config && this.goldenLayout.config.content && this.goldenLayout.config.content.length === 1) {
             if (this.goldenLayout.config.content[0].type === 'component') {
-                this.registerComponent(this.goldenLayout.config.content[0])
+                this.goldenLayout.eventHub.on('sayHi', function (user) {
+                    console.log(user.name)
+                });
+                // setTimeout(() => {
+                //     this.registerComponent(this.goldenLayout.config.content[0])
+                // }, 3000)
             }
         }
+
         this.goldenLayout.init();
 
         window.addEventListener('resize', () => {
@@ -184,7 +197,9 @@ class GoldenLayoutWrapper extends React.Component {
         return (
             <MuiThemeProvider>
                 <div>
-                    <div className='goldenLayout' ref={input => this.layout = input} />
+                    <Header />
+                    <Menu />
+                    <div className='goldenLayout' ref={dom => this.layout = dom} />
                 </div>
 
             </MuiThemeProvider>
