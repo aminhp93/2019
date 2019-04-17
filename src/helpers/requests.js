@@ -24,6 +24,9 @@ export function getHeaderRequest() {
   };
 }
 
+export function getCorsAnywhereUrl() {
+  return 'https://cors-anywhere.herokuapp.com/'
+}
 export function getCompanyInfoUrl(symbol) {
   return (
     "https://www.fireant.vn/api/Data/Companies/CompanyInfo?symbol=" + symbol
@@ -32,4 +35,8 @@ export function getCompanyInfoUrl(symbol) {
 
 export function getWatchlistsUrl() {
   return "https://svr1.fireant.vn/api/Data/Watchlists/Watchlists";
+}
+
+export function getLatestNewUrl() {
+  return 'https://svr3.fireant.vn/api/Data/MemberNews/LastestNews'
 }

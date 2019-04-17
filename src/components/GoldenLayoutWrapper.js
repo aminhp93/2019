@@ -7,6 +7,8 @@ import Self from "./Self";
 import Header from "./Header";
 import Menu from "./Menu";
 import Dashboard from "./Dashboard";
+import Overview from "./Overview";
+import Navigation from "./Navigation";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import layoutConfig from "../layoutConfig";
 import dataStorage from "../dataStorage";
@@ -130,7 +132,7 @@ class GoldenLayoutWrapper extends React.Component {
       this.goldenLayout.config.content.length === 1
     ) {
       if (this.goldenLayout.config.content[0].type === "component") {
-        this.goldenLayout.eventHub.on("sayHi", function(user) {
+        this.goldenLayout.eventHub.on("sayHi", function (user) {
           console.log(user.name);
         });
         // setTimeout(() => {
@@ -198,7 +200,7 @@ class GoldenLayoutWrapper extends React.Component {
     }
   }
 
-  handleCallbackHeader(data) {}
+  handleCallbackHeader(data) { }
   handleCallbackMenu(content) {
     this.setState({
       content
@@ -208,9 +210,11 @@ class GoldenLayoutWrapper extends React.Component {
   renderContent() {
     switch (this.state.content) {
       case "dashboard":
-        return <Dashboard />;
+        return <Dashboard />
+      case "overview":
+        return <Overview />
       default:
-        return <div>No data</div>;
+        return <Overview />
     }
   }
   render() {
@@ -219,7 +223,10 @@ class GoldenLayoutWrapper extends React.Component {
         <Header callbackHeader={this.handleCallbackHeader.bind(this)} />
         <div className="contentContainer">
           <Menu callbackMenu={this.handleCallbackMenu.bind(this)} />
-          <div className="content">{this.renderContent()}</div>
+          <div className="content">
+            <Navigation />
+            {this.renderContent()}
+          </div>
         </div>
         {/* <div className="goldenLayout" ref={dom => (this.layout = dom)} /> */}
       </MuiThemeProvider>
