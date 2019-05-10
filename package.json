@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "ag-grid-community": "^19.0.0",
+    "ag-grid-community": "^19.1.4",
     "ag-grid-enterprise": "^19.0.0",
-    "ag-grid-react": "^19.0.0",
+    "ag-grid-react": "^19.1.2",
     "ajv": "^6.5.3",
     "axios": "^0.18.0",
     "form-data": "^2.3.2",
